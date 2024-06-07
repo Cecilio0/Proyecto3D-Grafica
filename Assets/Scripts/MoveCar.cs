@@ -8,6 +8,7 @@ public class MoveCar : MonoBehaviour
     [SerializeField] private float carRotationPerFrame;
     [SerializeField] private float wheelRotationPerFrame;
     [SerializeField] private GameObject[] wheels;
+    [SerializeField] private KeyCode reverseKey = KeyCode.R;
 
     // Start is called before the first frame update
     void Start()
@@ -18,7 +19,12 @@ public class MoveCar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(reverseKey))
+        {
+            carSpeedPerFrame *= -1;
+            carRotationPerFrame *= -1;
+            wheelRotationPerFrame *= -1;
+        }
     }
 
     void FixedUpdate()
